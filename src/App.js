@@ -20,63 +20,74 @@ function App() {
         </Text>
       </header>
       <main>
-        <Box
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
-          alignItems="center"
-          gap="10px"
-        >
+        <Box bg="grey" maxWidth="25%" marginLeft="35%" minWidth="350px">
           <Box
+            padding="40px"
             display="flex"
-            justifyContent="space-between"
-            width="210px"
-            border="1px solid black"
-            borderRadius="4px"
-            height="40px"
+            flexDirection="column"
+            justifyContent="center"
             alignItems="center"
-            paddingLeft="5px"
+            gap="10px"
           >
-            <Text w="fit-content">{counts}</Text>
-            <Text color="green" w="fit-content">
-              {result}
-            </Text>
-          </Box>
-          <Box display="flex" gap="10px">
             <Box
-              bg="tomato"
               display="flex"
-              justifyContent="center"
+              justifyContent="space-between"
+              width="270px"
+              border="2px solid black"
+              borderRadius="4px"
+              height="40px"
               alignItems="center"
+              paddingLeft="5px"
             >
-              <ButtonsFolder data={counts} onClick={setCounts} />
+              <Text w="fit-content" color="tomato">
+                {counts}
+              </Text>
+              <Text color="skyblue" w="fit-content" margin="5px">
+                {result}
+              </Text>
             </Box>
-            <Box bg="blue" display="flex" flexDirection="column">
-              <CountButton
-                data={counts}
-                onClick={applyExpression}
-                expression={"+"}
-              />
-              <CountButton
-                data={counts}
-                onClick={applyExpression}
-                expression={"-"}
-              />
-              <CountButton
-                data={counts}
-                onClick={applyExpression}
-                expression={"×"}
-              />
-              <CountButton
-                data={counts}
-                onClick={applyExpression}
-                expression={"÷"}
-              />
-              <CountButton
-                data={counts}
-                onClick={applyExpression}
-                expression={"="}
-              />
+            <Box display="flex" gap="10px">
+              <Box display="flex">
+                <ButtonsFolder data={counts} onClick={setCounts} />
+              </Box>
+              <Box display="flex" flexDirection="column">
+                <CountButton
+                  data={counts}
+                  onClick={applyExpression}
+                  expression={"+"}
+                />
+                <CountButton
+                  data={counts}
+                  onClick={applyExpression}
+                  expression={"-"}
+                />
+                <CountButton
+                  data={counts}
+                  onClick={applyExpression}
+                  expression={"×"}
+                />
+                <CountButton
+                  data={counts}
+                  onClick={applyExpression}
+                  expression={"÷"}
+                />
+              </Box>
+              <Box>
+                <Button
+                  onClick={() => {
+                    const listExpression = /\+|\-|\/|\*| /;
+                    const lastNumber = counts[counts.length - 1];
+                    if (listExpression.test(lastNumber)) return;
+                    setResult(eval(counts));
+                  }}
+                  w="40px"
+                  height="40px"
+                  margin="4px"
+                  bg="tomato"
+                >
+                  =
+                </Button>
+              </Box>
             </Box>
           </Box>
         </Box>
@@ -118,11 +129,21 @@ function ButtonsFolder(props) {
 }
 
 function CountButton(props) {
+  const checkExspressionType = () => {
+    const listExpression = /\+|\-|\/|\*| /;
+    const lastNumber = props.data[props.data.length - 1];
+    if (listExpression.test(lastNumber)) return;
+    props.onClick(props.data + props.expression);
+  };
+
   return (
     <Button
-      w="10px"
+      w="40px"
+      height="40px"
+      margin="4px"
+      bg="skyblue"
       onClick={() => {
-        props.onClick(props.data + props.expression);
+        checkExspressionType();
       }}
     >
       {props.expression}
