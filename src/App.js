@@ -5,6 +5,13 @@ function App() {
   const [counts, setCounts] = useState("0");
   const [result, setResult] = useState("");
 
+  // Подсчет значения для результата
+
+  const applyExpression = (countedNumber) => {
+    setCounts(countedNumber);
+    setResult(eval(counts));
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -23,20 +30,54 @@ function App() {
           <Box
             display="flex"
             justifyContent="space-between"
-            width="152px"
+            width="210px"
             border="1px solid black"
-            borderRadius="7px"
+            borderRadius="4px"
+            height="40px"
+            alignItems="center"
+            paddingLeft="5px"
           >
             <Text w="fit-content">{counts}</Text>
-            <Text w="fit-content">{result}</Text>
+            <Text color="green" w="fit-content">
+              {result}
+            </Text>
           </Box>
-          <Box
-            bg="tomato"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <ButtonsFolder data={counts} onClick={setCounts} />
+          <Box display="flex" gap="10px">
+            <Box
+              bg="tomato"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <ButtonsFolder data={counts} onClick={setCounts} />
+            </Box>
+            <Box bg="blue" display="flex" flexDirection="column">
+              <CountButton
+                data={counts}
+                onClick={applyExpression}
+                expression={"+"}
+              />
+              <CountButton
+                data={counts}
+                onClick={applyExpression}
+                expression={"-"}
+              />
+              <CountButton
+                data={counts}
+                onClick={applyExpression}
+                expression={"×"}
+              />
+              <CountButton
+                data={counts}
+                onClick={applyExpression}
+                expression={"÷"}
+              />
+              <CountButton
+                data={counts}
+                onClick={applyExpression}
+                expression={"="}
+              />
+            </Box>
           </Box>
         </Box>
       </main>
@@ -46,6 +87,7 @@ function App() {
 
 export default App;
 
+// First component of field with buttons
 function ButtonsFolder(props) {
   const field = Array(10)
     .fill(null)
@@ -72,5 +114,18 @@ function ButtonsFolder(props) {
     <Box display="flex" justifyContent="row" w="152px" flexWrap="wrap">
       {field}
     </Box>
+  );
+}
+
+function CountButton(props) {
+  return (
+    <Button
+      w="10px"
+      onClick={() => {
+        props.onClick(props.data + props.expression);
+      }}
+    >
+      {props.expression}
+    </Button>
   );
 }
