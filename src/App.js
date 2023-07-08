@@ -55,7 +55,7 @@ function App() {
               <Text w="fit-content" className="count">
                 {counts}
               </Text>
-              <Text color="skyblue" w="fit-content" margin="5px">
+              <Text color="green" w="fit-content" margin="5px">
                 {result}
               </Text>
             </Box>
@@ -77,12 +77,12 @@ function App() {
                 <CountButton
                   data={counts}
                   onClick={applyExpression}
-                  expression={"×"}
+                  expression={"*"}
                 />
                 <CountButton
                   data={counts}
                   onClick={applyExpression}
-                  expression={"÷"}
+                  expression={"/"}
                 />
               </Box>
               <Box>
