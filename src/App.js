@@ -1,11 +1,13 @@
-import { Box, Text, Button } from "@chakra-ui/react";
+import { Box, Text, Button, Input, Flex } from "@chakra-ui/react";
 import { React, useState } from "react";
+
+import "./App.css";
 
 function App() {
   const [counts, setCounts] = useState("0");
   const [result, setResult] = useState("");
 
-  // Подсчет значения для результата
+  // Изменение состояния
 
   const applyExpression = (countedNumber) => {
     setCounts(countedNumber);
@@ -15,12 +17,22 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Text marginBottom="200px" textAlign="center" fontSize="5xl" bg="green">
+        <Text
+          marginBottom="200px"
+          textAlign="center"
+          fontSize="5xl"
+          bg="gainsboro"
+        >
           Header
         </Text>
       </header>
       <main>
-        <Box bg="grey" maxWidth="25%" marginLeft="35%" minWidth="350px">
+        <Box
+          className="mainbox"
+          maxWidth="25%"
+          marginLeft="35%"
+          minWidth="350px"
+        >
           <Box
             padding="40px"
             display="flex"
@@ -29,6 +41,7 @@ function App() {
             alignItems="center"
             gap="10px"
           >
+            <InputCalc />
             <Box
               display="flex"
               justifyContent="space-between"
@@ -39,7 +52,7 @@ function App() {
               alignItems="center"
               paddingLeft="5px"
             >
-              <Text w="fit-content" color="tomato">
+              <Text w="fit-content" className="count">
                 {counts}
               </Text>
               <Text color="skyblue" w="fit-content" margin="5px">
@@ -86,6 +99,18 @@ function App() {
                   bg="tomato"
                 >
                   =
+                </Button>
+                <Button
+                  w="40px"
+                  height="40px"
+                  margin="4px"
+                  bg="tomato"
+                  onClick={() => {
+                    setCounts("0");
+                    setResult("");
+                  }}
+                >
+                  C
                 </Button>
               </Box>
             </Box>
@@ -148,5 +173,42 @@ function CountButton(props) {
     >
       {props.expression}
     </Button>
+  );
+}
+// Функционал инпута (быстрый подсчет)
+function InputCalc() {
+  const [result, setResult] = useState("");
+  const [counts, setCounts] = useState("");
+  const updateCounts = (e) => {
+    const expressions = /\+|\-|\/|\*|=|\$|[A-z]| /;
+    const lastNumber = e.target.value[e.target.value.length - 2];
+    // функционал блока, чтобы не могли работать математические знаки сначала
+    if (
+      // Второй с конца входит в плохой список
+      expressions.test(lastNumber) &&
+      // и последний нажатый элемент входит
+      expressions.test(e.nativeEvent.data) &&
+      // и последний нажатый элемент не стирание
+      e.nativeEvent.data !== null
+    )
+      return;
+
+    // Проверка, чтобы при нажатии на знаки не выводился результат со знаками
+    if (!expressions.test(e.nativeEvent.data)) setResult(eval(e.target.value));
+    // Заносим в переменную
+    setCounts(e.target.value);
+  };
+
+  return (
+    <Flex w="100%" justifyContent="center">
+      <Input
+        value={counts}
+        type="text"
+        onChange={(e) => {
+          updateCounts(e);
+        }}
+      ></Input>
+      <Text>{result}</Text>
+    </Flex>
   );
 }

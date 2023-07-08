@@ -1,0 +1,9 @@
+.mainbox {
+  background-color: rgba(95, 158, 160, 0.749);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.58) 0 0 10px 2px;
+}
+
+.count {
+  color: darkslateblue;
+}
