@@ -10,8 +10,8 @@ function CountButton(props) {
 
   return (
     <Button
-      w="40px"
-      height="40px"
+      w="50px"
+      height="50px"
       margin="4px"
       bg="skyblue"
       onClick={() => {

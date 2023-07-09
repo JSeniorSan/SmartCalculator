@@ -1,5 +1,5 @@
 import { Box, Text, Button, Input, Flex } from "@chakra-ui/react";
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 
 import "../App.css";
 
@@ -7,6 +7,9 @@ import "../App.css";
 function InputCalc() {
   const [result, setResult] = useState("");
   const [counts, setCounts] = useState("");
+  useEffect(() => {
+    document.querySelector("input").focus();
+  });
   const updateCounts = (e) => {
     const expressions = /\+|\-|\/|\*|=|\$|[A-z]| /;
     const lastNumber = e.target.value[e.target.value.length - 2];
@@ -30,13 +33,17 @@ function InputCalc() {
   return (
     <Flex w="100%" justifyContent="center">
       <Input
+        fontSize="24px"
+        color="grey.300"
         value={counts}
         type="text"
         onChange={(e) => {
           updateCounts(e);
         }}
       ></Input>
-      <Text>{result}</Text>
+      <Text marginLeft="5px" fontSize="24px" color="grey.200">
+        {result}
+      </Text>
     </Flex>
   );
 }
