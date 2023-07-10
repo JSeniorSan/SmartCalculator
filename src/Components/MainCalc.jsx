@@ -2,21 +2,39 @@ import { React, useState } from "react";
 import { Box, Text, Button, Input, Flex } from "@chakra-ui/react";
 import ClickCalculator from "./ClickCalculator";
 import InputCalc from "./InputCalc";
+import History from "./History";
+// ---------------------------------------------------------------------
+
 function MainCalc() {
   const [calcType, setCalcType] = useState("ClickCalc");
-
+  const [arrHistory, setArrHistory] = useState([]);
   let calculator;
   switch (calcType) {
     case "ClickCalc":
-      calculator = <ClickCalculator />;
+      calculator = (
+        <ClickCalculator onClick={updateHistory} arrHistory={arrHistory} />
+      );
 
       break;
     case "InputCalc":
-      calculator = <InputCalc />;
+      calculator = (
+        <InputCalc onKeyDown={updateHistory} arrHistory={arrHistory} />
+      );
       break;
     default:
-      calculator = <ClickCalculator />;
+      calculator = (
+        <ClickCalculator onClick={updateHistory} arrHistory={arrHistory} />
+      );
   }
+
+  function updateHistory(calcResult) {
+    const newArr = [...arrHistory];
+    newArr.push(eval(calcResult));
+    setArrHistory(newArr);
+    // newArr.concat(eval(calcResult));
+  }
+
+  function keyDown() {}
 
   return (
     <Box
@@ -56,10 +74,14 @@ function MainCalc() {
               ? "Switch to InputCalc"
               : "Switch to ClickCalc"}
           </Button>
-          {calculator}
+          <Box m="5px">
+            <History arrHistory={arrHistory} />
+            {calculator}
+          </Box>
         </Box>
       </Box>
     </Box>
   );
 }
+
 export default MainCalc;

@@ -4,11 +4,11 @@ import "../App.css";
 
 // -------------------------------------------------
 // Инпуты компонент
-import InputCalc from "./InputCalc";
+
 import ButtonsFolder from "./ButtonsFolder";
 import CountButton from "./CountButton";
 // -------------------------------------------------
-function ClickCalculator() {
+function ClickCalculator(props) {
   // ------------------------------------------------------
   // Изменение состояния
   const [counts, setCounts] = useState("0");
@@ -81,6 +81,13 @@ function ClickCalculator() {
               const lastNumber = counts[counts.length - 1];
               if (listExpression.test(lastNumber)) return;
               setResult(eval(counts));
+              if (props.arrHistory.length > 3) {
+                props.arrHistory.shift();
+                props.onClick(counts);
+              } else {
+                props.onClick(counts);
+              }
+
               setCounts("0");
             }}
             w="50px"

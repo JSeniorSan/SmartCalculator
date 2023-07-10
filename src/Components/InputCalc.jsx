@@ -4,7 +4,7 @@ import { React, useState, useEffect } from "react";
 import "../App.css";
 
 // Функционал инпута (быстрый подсчет)
-function InputCalc() {
+function InputCalc(props) {
   const [result, setResult] = useState("");
   const [counts, setCounts] = useState("");
   useEffect(() => {
@@ -39,6 +39,18 @@ function InputCalc() {
         type="text"
         onChange={(e) => {
           updateCounts(e);
+        }}
+        onKeyDown={(e) => {
+          if (e.nativeEvent.key === "Enter") {
+            if (props.arrHistory.length > 3) {
+              props.arrHistory.shift();
+              props.onKeyDown(counts);
+            } else {
+              props.onKeyDown(counts);
+            }
+
+            setCounts("");
+          }
         }}
       ></Input>
       <Text marginLeft="5px" fontSize="24px" color="grey.200">
