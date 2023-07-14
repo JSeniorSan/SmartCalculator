@@ -1,6 +1,6 @@
 import { Box, Text, Button, Input, Flex } from "@chakra-ui/react";
 import { React, useState, useEffect } from "react";
-
+import History from "./History";
 import "../App.css";
 
 // Функционал инпута (быстрый подсчет)
@@ -31,31 +31,34 @@ function InputCalc(props) {
   };
 
   return (
-    <Flex w="100%" justifyContent="center">
-      <Input
-        fontSize="24px"
-        color="grey.300"
-        value={counts}
-        type="text"
-        onChange={(e) => {
-          updateCounts(e);
-        }}
-        onKeyDown={(e) => {
-          if (e.nativeEvent.key === "Enter") {
-            if (props.arrHistory.length > 3) {
-              props.arrHistory.shift();
-              props.onKeyDown(counts);
-            } else {
-              props.onKeyDown(counts);
-            }
+    <Flex w="100%" justifyContent="center" flexDirection="column">
+      <History arrHistory={props.arrHistory} />
+      <Flex>
+        <Input
+          fontSize="24px"
+          color="grey.300"
+          value={counts}
+          type="text"
+          onChange={(e) => {
+            updateCounts(e);
+          }}
+          onKeyDown={(e) => {
+            if (e.nativeEvent.key === "Enter") {
+              if (props.arrHistory.length > 3) {
+                props.arrHistory.shift();
+                props.onKeyDown(counts);
+              } else {
+                props.onKeyDown(counts);
+              }
 
-            setCounts("");
-          }
-        }}
-      ></Input>
-      <Text marginLeft="5px" fontSize="24px" color="grey.200">
-        {result}
-      </Text>
+              setCounts("");
+            }
+          }}
+        ></Input>
+        <Text marginLeft="5px" fontSize="24px" color="grey.200">
+          {result}
+        </Text>
+      </Flex>
     </Flex>
   );
 }

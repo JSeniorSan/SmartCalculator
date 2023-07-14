@@ -9,7 +9,6 @@ function Header() {
         fontSize="5xl"
         bg="gainsboro"
         borderBottom="1px solid white"
-        boxShadow="inset 0 -7px 10px -5px tomato"
       >
         Tekai's Smart Calculator
       </Text>

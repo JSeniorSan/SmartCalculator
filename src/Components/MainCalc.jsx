@@ -27,14 +27,14 @@ function MainCalc() {
       );
   }
 
+  function transfer() {}
+
   function updateHistory(calcResult) {
     const newArr = [...arrHistory];
     newArr.push(eval(calcResult));
     setArrHistory(newArr);
     // newArr.concat(eval(calcResult));
   }
-
-  function keyDown() {}
 
   return (
     <Box
@@ -50,7 +50,7 @@ function MainCalc() {
         className="mainbox"
         maxWidth="30%"
         minWidth="330px"
-        h="70vh"
+        h="75vh"
         zIndex="2"
       >
         <Box
@@ -61,7 +61,7 @@ function MainCalc() {
           alignItems="center"
           gap="10px"
           border="0.5px solid black"
-          h="70vh"
+          h="75vh"
         >
           <Button
             onClick={() =>
@@ -74,10 +74,7 @@ function MainCalc() {
               ? "Switch to InputCalc"
               : "Switch to ClickCalc"}
           </Button>
-          <Box m="5px">
-            <History arrHistory={arrHistory} />
-            {calculator}
-          </Box>
+          <Box m="5px">{calculator}</Box>
         </Box>
       </Box>
     </Box>

@@ -1,7 +1,7 @@
 import { Box, Text, Button, Input, Flex } from "@chakra-ui/react";
 import { React, useState } from "react";
 import "../App.css";
-
+import History from "./History";
 // -------------------------------------------------
 // Инпуты компонент
 
@@ -19,14 +19,27 @@ function ClickCalculator(props) {
     setResult(eval(counts));
   };
 
+  function applyHistoryValue(historyValue) {
+    if (counts !== "0") {
+      setCounts(counts + historyValue);
+    } else {
+      setCounts(historyValue);
+    }
+  }
+
   return (
     <Box
       display="flex"
       flexDirection="column"
       justifyContent="center"
-      alignItems="center"
+      alignItems="flex-end"
       gap="10px"
     >
+      <Text fontSize="18px">История операций</Text>
+      <History
+        arrHistory={props.arrHistory}
+        applyHistoryValue={applyHistoryValue}
+      />
       <Box
         display="flex"
         justifyContent="space-between"

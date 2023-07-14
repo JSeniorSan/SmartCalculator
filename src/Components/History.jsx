@@ -6,7 +6,12 @@ function History(props) {
     return (
       <Box display="flex" gap="10px" alignItems="center" key={i + 3}>
         <Text key={i + 2}>{"№" + (i + 1)}</Text>
-        <Button key={i} w="100px" bg="green.100">
+        <Button
+          key={i}
+          w="100px"
+          bg="green.100"
+          onClick={() => props.applyHistoryValue(historyEl)}
+        >
           {historyEl}
         </Button>
       </Box>
