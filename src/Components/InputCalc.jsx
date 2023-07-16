@@ -30,9 +30,21 @@ function InputCalc(props) {
     setCounts(e.target.value);
   };
 
+  // Установка значения из истории в слот инпута
+  function applyHistoryValue(historyValue) {
+    if (counts !== "0") {
+      setCounts(counts + historyValue);
+    } else {
+      setCounts(historyValue);
+    }
+  }
+
   return (
     <Flex w="100%" justifyContent="center" flexDirection="column">
-      <History arrHistory={props.arrHistory} />
+      <History
+        arrHistory={props.arrHistory}
+        applyHistoryValue={applyHistoryValue}
+      />
       <Flex>
         <Input
           fontSize="24px"

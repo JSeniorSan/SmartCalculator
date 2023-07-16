@@ -27,8 +27,6 @@ function MainCalc() {
       );
   }
 
-  function transfer() {}
-
   function updateHistory(calcResult) {
     const newArr = [...arrHistory];
     newArr.push(eval(calcResult));
