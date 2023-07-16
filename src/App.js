@@ -39,11 +39,11 @@ function Menu() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box bg="white" position="sticky">
+    <Box bg="grey" display="inline-block" position="absolute">
       <HamburgerIcon
         bg="blue.200"
         onClick={onToggle}
-        w="45px"
+        w="60px"
         h="45px"
         p="5px"
         m="5px"
@@ -56,11 +56,12 @@ function Menu() {
         style={isOpen ? { display: true } : { display: "none" }}
       >
         <Box
+          display="inline"
           bg="blue.100"
           border="1px solid white"
           position="absolute"
           zIndex="20"
-          w="40%"
+          // w="40%"
         >
           <List display="flex" flexDirection="column" gap="3px" m="5px" p="8px">
             <ListItem fontSize="18px">Calculator</ListItem>
