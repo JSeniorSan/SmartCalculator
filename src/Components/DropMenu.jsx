@@ -20,13 +20,14 @@ function DropMenu(props) {
   return (
     <Box bg="white" onMouseLeave={onClose} zIndex={30} marginLeft="10px">
       <HamburgerIcon
-        bg="blue.200"
+        bg="blackAlpha.800"
         onClick={onToggle}
         w="60px"
         h="45px"
         p="5px"
         m="5px"
         borderRadius="5px"
+        color={"white"}
       />
       <SlideFade
         // Обязательная часть, чтобы выпадало меню при действии с иконкой
@@ -37,12 +38,11 @@ function DropMenu(props) {
       >
         <Box
           display="inline"
-          bg="blue.100"
+          bg="blackAlpha.800"
           border="1px solid white"
           position="absolute"
-          zIndex="50"
-          minW="30%"
-          maxW={"40%"}
+          zIndex="30"
+          w="200px"
         >
           <List
             display="flex"
