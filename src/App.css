@@ -7,3 +7,23 @@
 .count {
   color: rgb(44, 16, 221);
 }
+
+.btn {
+  background-color: rgba(0, 0, 0, 0.178);
+  border: 1px solid rgba(255, 255, 255, 0.479);
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.589);
+  color: cadetblue;
+  font-size: 20px;
+  width: 80%;
+}
+
+.btn:hover {
+  background-color: azure;
+  transform: translateY(-5px);
+}
+
+.btn:active {
+  transform: translateY(2px);
+  transition: all 0.2s ease-in-out;
+}

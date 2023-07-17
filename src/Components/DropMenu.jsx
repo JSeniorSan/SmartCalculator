@@ -1,4 +1,4 @@
-import "./CSS.css";
+import "../App.css";
 import {
   Box,
   Text,
@@ -21,7 +21,7 @@ function DropMenu(props) {
     <Box bg="white" onMouseLeave={onClose} zIndex={30} marginLeft="10px">
       <HamburgerIcon
         bg="blue.200"
-        onMouseEnter={onOpen}
+        onClick={onToggle}
         w="60px"
         h="45px"
         p="5px"
@@ -40,34 +40,32 @@ function DropMenu(props) {
           bg="blue.100"
           border="1px solid white"
           position="absolute"
-          zIndex="20"
-          minW="20%"
-          maxW={"50%"}
+          zIndex="50"
+          minW="30%"
+          maxW={"40%"}
         >
-          <List display="flex" flexDirection="column" gap="3px" m="5px" p="8px">
-            <ListItem fontSize="18px">
-              <Button
-                className="btn btn--menu"
-                onClick={(e) => props.menuItemCickHandler("Calculator")}
-                w={"80%"}
-              >
-                Calculator
-              </Button>
-            </ListItem>
-            <ListItem fontSize="18px">
-              <Button
-                w={"80%"}
-                className="btn btn--menu"
-                onClick={(e) => props.menuItemCickHandler("DropMenu")}
-              >
-                Converter
-              </Button>
-            </ListItem>
-            <ListItem fontSize="18px">
-              <Button className="btn btn--menu" w={"80%"}>
-                Settings
-              </Button>
-            </ListItem>
+          <List
+            display="flex"
+            flexDirection="column"
+            gap="15px"
+            m="5px"
+            p="8px"
+          >
+            <button
+              className="btn"
+              onClick={(e) => props.menuItemCickHandler("Calculator")}
+            >
+              Calculator
+            </button>
+
+            <button
+              className="btn"
+              onClick={(e) => props.menuItemCickHandler("DropMenu")}
+            >
+              Converter
+            </button>
+
+            <button className="btn">Settings</button>
           </List>
         </Box>
       </SlideFade>
