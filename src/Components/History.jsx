@@ -7,6 +7,7 @@ function History(props) {
       <Box display="flex" gap="10px" alignItems="center" key={i + 3}>
         <Text key={i + 2}>{"№" + (i + 1)}</Text>
         <Button
+          className="draggable"
           key={i}
           w="100px"
           bg="green.100"

@@ -17,6 +17,7 @@ function CountButton(props) {
       onClick={() => {
         checkExspressionType();
       }}
+      className="droppable"
     >
       {props.expression}
     </Button>
