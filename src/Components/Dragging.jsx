@@ -5,6 +5,7 @@ function Dragging(props) {
   function drag(element) {
     // обработка нажатия на конкретный элемент
     let draggable = element.target;
+    console.log(draggable);
     // добавляем новый метод к элементу на нажатие левой кнопки мыши
     draggable.onmousedown = function (event) {
       // подготовка элемента к переносу
@@ -20,6 +21,61 @@ function Dragging(props) {
       }
       // вызываем функцию
       moveAt(event.pageX, event.pageY);
+
+      //
+
+      let currentDroppable = null;
+      function onMouseMove(event) {
+        moveAt(event.pageX, event.pageY);
+        draggable.hidden = true;
+        let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
+        draggable.hidden = false;
+        if (!elemBelow) return;
+        let droppableBelow = elemBelow.closest(".droppagle");
+
+        if (droppableBelow !== currentDroppable) {
+          if (currentDroppable) {
+            leaveDroppable(currentDroppable);
+          }
+          currentDroppable = droppableBelow;
+          if (currentDroppable) {
+            enterDroppable(currentDroppable);
+          }
+        }
+      }
+      // логика, когда переводимый элемент открепляется на нужном участке отжимом мыши
+      function enterDroppable(elem) {
+        // эвент лисенер на отжим кнопки
+        draggable.onmouseup = function (elem) {
+          draggable.style.display = "none";
+          // вичисляется в результат значение предыдущего результата, нужного знака и переносимого элемента
+          props.setResult(
+            eval(`${props.result} ${elem.innerHTML} ${draggable.innerHtml}`)
+          );
+          document.removeEventListener("mousemove", onMouseMove);
+          draggable.onmouseup = null;
+          draggable = null;
+          return;
+        };
+        draggable.style.cursor = "copy";
+      }
+
+      function leaveDroppable(elem) {
+        elem.style.background = "";
+        draggable.style.cursor = "default";
+      }
+      //   обработчик события при движении мыши (разобрать)
+      document.addEventListener("mousemove", onMouseMove);
+
+      //   описание отпускания мыши не в области
+      draggable.onmouseup = function () {
+        draggable.style.dispalay = "none";
+        document.removeEventListener("mousemove", onMouseMove);
+        props.setHistory(draggable.innerHTML);
+        // разобрать
+        draggable.onmouseup = null;
+        draggable = null;
+      };
     };
   }
 
