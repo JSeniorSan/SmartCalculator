@@ -8,11 +8,17 @@ import History from "./History";
 function MainCalc() {
   const [calcType, setCalcType] = useState("ClickCalc");
   const [arrHistory, setArrHistory] = useState([]);
+  console.log(arrHistory);
+
   let calculator;
   switch (calcType) {
     case "ClickCalc":
       calculator = (
-        <ClickCalculator onClick={updateHistory} arrHistory={arrHistory} />
+        <ClickCalculator
+          onClick={updateHistory}
+          arrHistory={arrHistory}
+          // changeHistoryDnD={changeHistoryDnD}
+        />
       );
 
       break;
@@ -23,16 +29,31 @@ function MainCalc() {
       break;
     default:
       calculator = (
-        <ClickCalculator onClick={updateHistory} arrHistory={arrHistory} />
+        <ClickCalculator
+          onClick={updateHistory}
+          arrHistory={arrHistory}
+          // changeHistoryDnD={changeHistoryDnD}
+        />
       );
   }
 
   function updateHistory(calcResult) {
     const newArr = [...arrHistory];
-    newArr.push(eval(calcResult));
+    newArr.push(Math.round(Number(eval(calcResult)) * 1000) / 1000);
     setArrHistory(newArr);
     // newArr.concat(eval(calcResult));
   }
+
+  // function changeHistoryDnD(historyItem) {
+  //   if (Number(historyItem) === arrHistory.at(-1)) {
+  //     const newArr = [...arrHistory];
+  //     newArr.shift();
+  //     newArr.push(Math.round(Number(eval(historyItem)) * 1000) / 1000);
+  //     setArrHistory(newArr);
+  //   } else {
+  //     setArrHistory(Math.round(Number(eval(historyItem)) * 1000) / 1000);
+  //   }
+  // }
 
   return (
     <Box

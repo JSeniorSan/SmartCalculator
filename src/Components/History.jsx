@@ -5,7 +5,6 @@ function History(props) {
   let results = props.arrHistory.map((historyEl, i) => {
     return (
       <Box display="flex" gap="10px" alignItems="center" key={i + 3}>
-        <Text key={i + 2}>{"№" + (i + 1)}</Text>
         <Button
           className="draggable"
           key={i}
@@ -26,6 +25,7 @@ function History(props) {
       alignItems="flex-end"
       gap="10px"
       marginBottom="10px"
+      height={"200px"}
     >
       {results}
     </Box>

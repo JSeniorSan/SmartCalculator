@@ -32,7 +32,8 @@ function ClickCalculator(props) {
     <Dragging
       setResult={setResult}
       result={result}
-      setHistory={applyHistoryValue}
+      setHistory={props.onClick}
+      // changeHistoryDnD={props.changeHistoryDnD}
     >
       <Box
         display="flex"
@@ -99,7 +100,9 @@ function ClickCalculator(props) {
                 const listExpression = /\+|\-|\/|\*| /;
                 const lastNumber = counts[counts.length - 1];
                 if (listExpression.test(lastNumber)) return;
-                setResult(eval(counts));
+                setResult(
+                  String(Math.round(Number(eval(counts)) * 1000) / 1000)
+                );
                 if (props.arrHistory.length > 3) {
                   props.arrHistory.shift();
                   props.onClick(counts);
