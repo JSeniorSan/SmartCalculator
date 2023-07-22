@@ -33,6 +33,7 @@ function ClickCalculator(props) {
       setResult={setResult}
       result={result}
       setHistory={props.onClick}
+
       // changeHistoryDnD={props.changeHistoryDnD}
     >
       <Box

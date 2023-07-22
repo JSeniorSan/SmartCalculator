@@ -17,6 +17,7 @@ function MainCalc() {
         <ClickCalculator
           onClick={updateHistory}
           arrHistory={arrHistory}
+          reSetHistory={setArrHistory}
           // changeHistoryDnD={changeHistoryDnD}
         />
       );
@@ -32,15 +33,18 @@ function MainCalc() {
         <ClickCalculator
           onClick={updateHistory}
           arrHistory={arrHistory}
+
           // changeHistoryDnD={changeHistoryDnD}
         />
       );
   }
 
-  function updateHistory(calcResult) {
+  function updateHistory(calcResult, condition) {
     const newArr = [...arrHistory];
+    // newArr.pop();
     newArr.push(Math.round(Number(eval(calcResult)) * 1000) / 1000);
     setArrHistory(newArr);
+
     // newArr.concat(eval(calcResult));
   }
 

@@ -4,7 +4,7 @@ import { React, useState } from "react";
 function History(props) {
   let results = props.arrHistory.map((historyEl, i) => {
     return (
-      <Box display="flex" gap="10px" alignItems="center" key={i + 3}>
+      <Box display="flex" alignItems="center" key={i + 3}>
         <Button
           className="draggable"
           key={i}
