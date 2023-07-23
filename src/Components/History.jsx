@@ -4,12 +4,15 @@ import { React, useState } from "react";
 function History(props) {
   let results = props.arrHistory.map((historyEl, i) => {
     return (
-      <Box display="flex" alignItems="center" key={i + 3}>
+      <Box display="flex" alignItems="center" key={i + 3} margin="0">
         <Button
           className="draggable"
           key={i}
           w="100px"
           bg="green.100"
+          flexGrow={"0"}
+          margin={"5px"}
+          flexShrink={"0"}
           onClick={() => props.applyHistoryValue(historyEl)}
         >
           {historyEl}
@@ -23,9 +26,10 @@ function History(props) {
       display="flex"
       flexDirection="column"
       alignItems="flex-end"
-      gap="10px"
+      // gap="10px"
       marginBottom="10px"
       height={"200px"}
+      className="history-box"
     >
       {results}
     </Box>

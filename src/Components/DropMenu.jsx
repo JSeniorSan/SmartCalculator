@@ -18,7 +18,13 @@ function DropMenu(props) {
   const { isOpen, onToggle, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box bg="white" onMouseLeave={onClose} zIndex={30} marginLeft="10px">
+    <Box
+      bg="white"
+      onMouseLeave={onClose}
+      zIndex={30}
+      marginLeft="10px"
+      className="nav-section"
+    >
       <HamburgerIcon
         bg="blackAlpha.800"
         onClick={onToggle}

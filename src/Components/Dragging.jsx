@@ -1,19 +1,20 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
 import { useEffect } from "react";
 // компонента-обертка для элементов
 function Dragging(props) {
   function drag(e) {
     let container = {};
     let element = e.target.closest(".draggable");
+
     console.log(container);
     element.onmousedown = function (e) {
       if (!element) return;
 
       shift(e);
-      document.body.append(element);
 
       element.style.position = "absolute";
       element.style.zIndex = 9999;
+      document.body.append(element);
 
       element.style.left = e.pageX - container.shiftX + "px";
       element.style.top = e.pageY - container.shiftY + "px";
@@ -49,21 +50,47 @@ function Dragging(props) {
           droppable.style.boxShadow = "0 0 0 0";
         }
         function enterDroppable(droppable) {
-          droppable.style.boxShadow = "0 0 10px 1px red";
+          droppable.style.boxShadow = "0 0 10px 1px green";
           console.log("Вошел");
         }
       }
       document.addEventListener("mousemove", onMouseMove);
 
       element.onmouseup = function (e) {
-        document.removeEventListener("mousemove", onMouseMove);
-        element.onmouseup = null;
+        try {
+          document.removeEventListener("mousemove", onMouseMove);
+
+          if (currentTarget) {
+            props.setResult(
+              eval(
+                `${props.result} ${currentTarget.innerHTML} ${element.innerHTML} `
+              )
+            );
+            rollback();
+            currentTarget.style.boxShadow = "0 0 0 0";
+          } else {
+            rollback();
+          }
+
+          element.onmouseup = null;
+          // document.body.prepend(element);
+        } catch {
+          alert("ooops....");
+          rollback();
+          currentTarget.style.boxShadow = "0 0 0 0";
+        }
       };
     };
     // отключаем встроенный в браузер dnd
     element.ondragstart = function () {
       return false;
     };
+    function rollback() {
+      // element.style.left = container.left - container.shiftX + "px";
+      // element.style.top = container.top - container.shiftY + "px";
+      document.querySelector(".history-box").append(element);
+      element.style.position = "static";
+    }
 
     // document.addEventListener("mousedown", onMouseDown);
 
@@ -76,6 +103,8 @@ function Dragging(props) {
       let shiftY = e.clientY - element.getBoundingClientRect().top;
       container.shiftX = shiftX;
       container.shiftY = shiftY;
+      container.left = e.pageX;
+      container.top = e.pageY;
     }
   }
 

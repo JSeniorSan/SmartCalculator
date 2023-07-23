@@ -76,7 +76,7 @@ function Converter() {
       <Flex gap={"15px"} m={"0px 10px 10px 10px"}>
         <Text
           border="1px solid white"
-          w={"103%"}
+          w={"105%"}
           borderRadius="6px"
           display={"flex"}
           justifyContent={"flex-start"}
