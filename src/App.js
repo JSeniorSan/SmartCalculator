@@ -39,34 +39,6 @@ function App() {
       selectedMode = <MainCalc />;
   }
 
-  // const menuElement = document.querySelector(".nav-section");
-  // const header = document.querySelector("header");
-
-  // useEffect(() => {
-  //   console.log("yes");
-
-  //   function observerCallback(e) {
-  //     const entry = e[0];
-  //     console.log(entry);
-  //     if (entry.isIntersecting === false) {
-  //       menuElement.style.position = "fixed";
-  //     } else {
-  //       menuElement.style.position = "static";
-  //     }
-  //   }
-  //   const observerOptions = {
-  //     root: null, //элемент сравнения
-  //     rootMargin: "-20px",
-  //     threshold: 0.1,
-  //   };
-
-  //   const observer = new IntersectionObserver(
-  //     observerCallback,
-  //     observerOptions
-  //   );
-  //   observer.observe(header);
-  // }, []);
-
   return (
     <div className="App">
       <Header />
