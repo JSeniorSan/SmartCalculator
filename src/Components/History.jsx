@@ -22,6 +22,7 @@ function History(props) {
   });
 
   return (
+    // Возврат бокса с историей
     <Box
       display="flex"
       flexDirection="column"
