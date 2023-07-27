@@ -10,9 +10,8 @@ import {
 } from "@chakra-ui/react";
 import { Select } from "@chakra-ui/react";
 import { React, useState, useRef, useEffect } from "react";
-import getData from "./parser";
 
-function Converter() {
+function MetricConverter() {
   const [input, setInput] = useState(0);
   const [result, setResult] = useState(0);
   const first = useRef();
@@ -104,4 +103,4 @@ function Converter() {
     </Flex>
   );
 }
-export default Converter;
+export default MetricConverter;

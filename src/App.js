@@ -12,8 +12,9 @@ import {
 import { React, useState, useEffect } from "react";
 import "./App.css";
 import DropMenu from "./Components/DropMenu";
-import Converter from "./Components/Converter";
-
+import ConverterMenu from "./Components/ConverterMenu";
+import MetricConverter from "./Components/MetricConverter.jsx";
+import MoneyConverter from "./Components/MoneyConverter.jsx";
 // -------------------------
 // List of main components
 import Header from "./Components/Header";
@@ -32,8 +33,16 @@ function App() {
     case "Calculator":
       selectedMode = <MainCalc />;
       break;
-    case "DropMenu":
-      selectedMode = <Converter />;
+    case "Converters":
+      selectedMode = (
+        <ConverterMenu menuItemCickHandler={menuItemCickHandler} />
+      );
+      break;
+    case "MoneyConverter":
+      selectedMode = <MoneyConverter />;
+      break;
+    case "MetricConverter":
+      selectedMode = <MetricConverter />;
       break;
     default:
       selectedMode = <MainCalc />;

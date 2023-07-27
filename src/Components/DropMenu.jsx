@@ -66,9 +66,11 @@ function DropMenu(props) {
 
             <button
               className="btn"
-              onClick={(e) => props.menuItemCickHandler("DropMenu")}
+              onClick={(e) => {
+                props.menuItemCickHandler("Converters");
+              }}
             >
-              Converter
+              Converters
             </button>
 
             <button className="btn">Settings</button>

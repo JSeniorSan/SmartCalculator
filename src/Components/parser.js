@@ -1,8 +1,7 @@
-const cheerio = require("cheerio");
-const axios = require("axios");
-url = "https://www.banki.ru/products/currency/cb/";
-
 const getData = async (currensy) => {
+  const cheerio = require("cheerio");
+  const axios = require("axios");
+  const url = "https://www.banki.ru/products/currency/cb/";
   const array = [];
   const response = await axios.get(url);
   console.log(response);
