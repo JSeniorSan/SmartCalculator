@@ -6,18 +6,20 @@ const getData = async (currensy) => {
   const array = [];
   const response = await axios.get(url);
   console.log(response);
-  const regex = new RegExp(currensy);
 
   const $ = cheerio.load(response.data);
   console.log($);
+  const regex = new RegExp(currensy);
 
-  $("tr").each((e, i) => {
+  $("tr").each((_e, i) => {
     if ($(i).text().match(regex)) {
       $(i)
         .children()
-        .each((e, x) => {
+        .each((_e, x) => {
           array.push($(x).html());
         });
     }
   });
+  return array[3];
 };
+export default getData;

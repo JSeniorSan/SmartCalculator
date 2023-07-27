@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { Select } from "@chakra-ui/react";
 import { React, useState, useRef, useEffect } from "react";
+import getData from "./parser";
 
 function Converter() {
   const [input, setInput] = useState(0);
