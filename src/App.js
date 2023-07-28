@@ -12,7 +12,7 @@ import {
 import { React, useState, useEffect } from "react";
 import "./App.css";
 import DropMenu from "./Components/DropMenu";
-import ConverterMenu from "./Components/ConverterMenu";
+import ButtonsChoiseConverter from "./Components/ButtonsChoiseConverter";
 import MetricConverter from "./Components/MetricConverter.jsx";
 import MoneyConverter from "./Components/MoneyConverter.jsx";
 // -------------------------
@@ -35,7 +35,7 @@ function App() {
       break;
     case "Converters":
       selectedMode = (
-        <ConverterMenu menuItemCickHandler={menuItemCickHandler} />
+        <ButtonsChoiseConverter menuItemCickHandler={menuItemCickHandler} />
       );
       break;
     case "MoneyConverter":
