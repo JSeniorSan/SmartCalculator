@@ -53,32 +53,31 @@ function MoneyConverter(props) {
             <Input type="number" width={"65%"}></Input>
             <Flex>
               <Select>
-                <option>USD</option>
-                <option>Рубль</option>
+                <option value="USD">USD</option>
+                <option value="Рубль">Рубль</option>
               </Select>
               <InfoIcon marginLeft="5px" />
             </Flex>
           </Flex>
           <Flex flexDirection={"column"}>
             <Flex width={"100%"} justifyContent="space-between">
-              <Flex>
-                <Text fontSize="40px" color="black" textAlign={"center"}>
-                  Result:
-                </Text>
-                <ArrowDownIcon
-                  width={"40px"}
-                  height={"70px"}
-                  color="green.300"
-                />
-              </Flex>
+              <Button>Convert</Button>
+
               <Flex>
                 <Select>
-                  <option>USD</option>
-                  <option>Рубль</option>
+                  <option value="USD">USD</option>
+                  <option value="Рубль">Рубль</option>
                 </Select>
                 <InfoIcon marginLeft="5px" />
               </Flex>
             </Flex>
+            <Flex>
+              <Text fontSize="40px" color="black" textAlign={"center"}>
+                Result:
+              </Text>
+              <ArrowDownIcon width={"40px"} height={"70px"} color="green.300" />
+            </Flex>
+
             <Text
               fontSize="60px"
               width="100%"
