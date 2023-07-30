@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import { Box, Text, Button, Input, Flex } from "@chakra-ui/react";
 import ClickCalculator from "./ClickCalculator";
 import InputCalc from "./InputCalc";
-import History from "./History";
+
 // ---------------------------------------------------------------------
 
 function MainCalc() {
@@ -18,7 +18,6 @@ function MainCalc() {
           onClick={updateHistory}
           arrHistory={arrHistory}
           reSetHistory={setArrHistory}
-          // changeHistoryDnD={changeHistoryDnD}
         />
       );
 
@@ -30,34 +29,16 @@ function MainCalc() {
       break;
     default:
       calculator = (
-        <ClickCalculator
-          onClick={updateHistory}
-          arrHistory={arrHistory}
-
-          // changeHistoryDnD={changeHistoryDnD}
-        />
+        <ClickCalculator onClick={updateHistory} arrHistory={arrHistory} />
       );
   }
 
   function updateHistory(calcResult, condition) {
     const newArr = [...arrHistory];
-    // newArr.pop();
+
     newArr.push(Math.round(Number(eval(calcResult)) * 1000) / 1000);
     setArrHistory(newArr);
-
-    // newArr.concat(eval(calcResult));
   }
-
-  // function changeHistoryDnD(historyItem) {
-  //   if (Number(historyItem) === arrHistory.at(-1)) {
-  //     const newArr = [...arrHistory];
-  //     newArr.shift();
-  //     newArr.push(Math.round(Number(eval(historyItem)) * 1000) / 1000);
-  //     setArrHistory(newArr);
-  //   } else {
-  //     setArrHistory(Math.round(Number(eval(historyItem)) * 1000) / 1000);
-  //   }
-  // }
 
   return (
     <Box

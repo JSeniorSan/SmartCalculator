@@ -29,13 +29,7 @@ function ClickCalculator(props) {
   }
 
   return (
-    <Dragging
-      setResult={setResult}
-      result={result}
-      setHistory={props.onClick}
-
-      // changeHistoryDnD={props.changeHistoryDnD}
-    >
+    <Dragging setResult={setResult} result={result} setHistory={props.onClick}>
       <Box
         display="flex"
         flexDirection="column"

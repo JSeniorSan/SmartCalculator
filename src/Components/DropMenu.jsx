@@ -28,8 +28,8 @@ function DropMenu(props) {
       <HamburgerIcon
         bg="blackAlpha.800"
         onClick={onToggle}
-        w="60px"
-        h="45px"
+        w="70px"
+        h="60px"
         p="5px"
         m="5px"
         borderRadius="5px"
@@ -39,6 +39,7 @@ function DropMenu(props) {
         // Обязательная часть, чтобы выпадало меню при действии с иконкой
         in={isOpen}
         offsetY="-20px"
+        offsetX="10px"
         // отключение отображения HTML кода, когда меню скрыто, чтобы случайно не нажималось
         style={isOpen ? { display: true } : { display: "none" }}
       >

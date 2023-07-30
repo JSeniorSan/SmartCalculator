@@ -1,20 +1,9 @@
-import {
-  Box,
-  Text,
-  Button,
-  Input,
-  Flex,
-  ListItem,
-  UnorderedList,
-  List,
-} from "@chakra-ui/react";
-
 import { React, useState, useEffect } from "react";
 import "./App.css";
 import DropMenu from "./Components/DropMenu";
 import ButtonsChoiseConverter from "./Components/ButtonsChoiseConverter";
 import MetricConverter from "./Components/MetricConverter.jsx";
-import MoneyConverter from "./Components/MoneyConverter.jsx";
+import MoneyConverter from "./Components/MainConverter/MoneyConverter.jsx";
 // -------------------------
 // List of main components
 import Header from "./Components/Header";

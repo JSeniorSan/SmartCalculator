@@ -1,15 +1,5 @@
-import {
-  Box,
-  Text,
-  Button,
-  Input,
-  Flex,
-  ListItem,
-  UnorderedList,
-  List,
-} from "@chakra-ui/react";
-
-import { React, useState, useRef, useEffect } from "react";
+import { Flex } from "@chakra-ui/react";
+import { React } from "react";
 import "./converterMenu.css";
 
 function ButtonsChoiseConverter(props) {

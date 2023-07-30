@@ -1,0 +1,25 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.btn-result {
+  padding: 10px;
+  background-color: cornflowerblue;
+  color: whitesmoke;
+  border-radius: 10px;
+
+  min-width: 40%;
+  box-shadow: rgba(0, 0, 0, 0.502) 0 0 10px 1px;
+}
+.btn-result:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.388);
+  box-shadow: rgba(255, 255, 255, 0.553) 0 0 10px 1px;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-result:active {
+  transform: translateY(5px);
+}

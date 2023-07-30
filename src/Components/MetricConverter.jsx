@@ -16,6 +16,8 @@ function MetricConverter() {
   const [result, setResult] = useState(0);
   const first = useRef();
   const second = useRef();
+  const convertingValues = ["Centimeters", "Meters", "None"];
+
   useEffect(() => document.querySelector(".input-start").focus());
   console.log(result);
   function convert() {

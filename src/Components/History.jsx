@@ -27,7 +27,6 @@ function History(props) {
       display="flex"
       flexDirection="column"
       alignItems="flex-end"
-      // gap="10px"
       marginBottom="10px"
       height={"200px"}
       className="history-box"
